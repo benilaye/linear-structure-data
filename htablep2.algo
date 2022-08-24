@@ -1,0 +1,40 @@
+LGORITHM checkpoint_ldataStructure
+VAR
+htab := HASH_TABLE<INTEGER,INTEGER>;
+setOne : ARRAY_OF INTEGER[4];
+	    setTwo : ARRAY_OF INTEGER[5];
+	j,i,counter,tempon : INTEGER := 0;
+	sum : INTEGER := 0;
+
+BEGIN
+setOne := [3, 1, 7, 9];
+setTwo := [2, 4, 1, 9, 3];
+
+
+	FOR i FROM 0 TO setOne.length-1 DO
+		htab.insert(i,setOne[i]);
+	END_FOR
+
+	FOR i FROM setOne.length  to setOne.length + setTwo.length-1
+	htab.insert(i,setTwo[i- setOne.length]);
+
+  END_FOR
+
+  FOR i FROM 0 TO htab.length-1 DO
+    tempon := htab.get(i)
+      FOR j from 0 TO htab.length-1 DO 
+
+	  IF (htab.get(j)= tempon)  THEN
+	  counter:=counter+1
+
+	  END_IF
+     END_FOR
+
+	 IF (counter>=2) THEN
+		sum:=sum+tempon 
+	 END_IF
+
+   END_FOR
+   WRITE(sum);
+		
+END
